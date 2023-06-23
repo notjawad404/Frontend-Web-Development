@@ -6,7 +6,6 @@ import Dashboard from "./dashboard"
 const Navbar = () => {
   return (
     <div className="flex">
-      {/* Vertical Navbar */}
       <nav className="bg-gray-800 w-1/6 h-auto">
         <div className="max-w-xs mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-center mt-8">

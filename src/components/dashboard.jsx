@@ -57,7 +57,7 @@ export default class Dashboard extends Component {
                                 <h1>Current Scenerio</h1>
                                 <h1 className='text-orange-500 text-3xl font-bold'>23 %</h1>
                                 <div className="w-100 bg-white rounded mx-5 my-3">
-                                    <div className="h-3 bg-red-500 rounded" style={{ width: '23%' }}></div>
+                                    <div className="h-3 bg-red-500 rounded w-4"></div>
                                 </div>
                                 <p className='text-sm'>These are your stats</p>
 
@@ -86,7 +86,7 @@ export default class Dashboard extends Component {
                         <span></span>
                     </div>
                     <div className="h-4 bg-gray-200 mx-2">
-                        <div className="h-full bg-blue-500" style={{ width: '54%' }}></div>
+                        <div className="h-full bg-blue-500 w-96" ></div>
                     </div>
                     <div className="flex justify-between my-2">
                         <span>First Quater</span>
@@ -105,13 +105,13 @@ export default class Dashboard extends Component {
                                 <h1 className='text-center'>Ana De Armas</h1>
                                 <h1 className='text-center'>Analyts</h1>
                                 <div className=" bg-slate-300">
-                                    <button className="hover:bg-red-700 text-white mx-2 text-sm">
+                                    <button className="hover:bg-red-700 text-white mx-1 text-sm">
                                         Button 1
                                     </button>
-                                    <button className="hover:bg-red-700 text-white mx-2 text-sm">
+                                    <button className="hover:bg-red-700 text-white mx-3 text-sm">
                                         Button 2
                                     </button>
-                                    <button className="bg-red-700 hover:bg-red-700 mx-2 text-white text-sm">
+                                    <button className="bg-red-700 hover:bg-red-700 mx-1 text-white text-sm">
                                         Button 3
                                     </button>
                                 </div>
