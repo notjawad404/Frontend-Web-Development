@@ -8,7 +8,7 @@ const ToDOScreen = () => {
   const navLinks = [
     { text: "Profile", to: "/" },
     { text: "Currency Convertor", to: "/Currency-Convertor" },
-    { text: "ToDo-App", to: "/ToDo" },
+    { text: "ToDo App", to: "/ToDo" },
     { text: "Dashboard", to: "/" },
     { text: "Admin", to: "/" },
     { text: "Records", to: "/" },

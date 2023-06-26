@@ -1,5 +1,9 @@
+import { Link} from 'react-router-dom';
 import '../App.css'
 import { useState } from "react";
+
+import profile from '../assets/profile.jpg';
+
 
 function CurrencyConvertor() {
     const [fromCurrency, setFromCurrency] = useState("USD");
@@ -24,11 +28,33 @@ function CurrencyConvertor() {
     };
 
     return (
-        <div className="bg-red-400 flex justify-center items-center h-screen">
-            <div className="container mx-96 p-4">
+        <div className='w-3/4'>
+                   <div className="grid grid-cols-2 gap-4 bg-gray-800 text-white">
+          <div className="col-span-1 p-4">
+            <p>
+              Your Profile <span className="text-lg">&gt;</span> <span className='text-red-400 font-semibold text-lg'>Currency Convertor</span>
+            </p>
+          </div>
+          <div className="col-span-1 p-4 flex justify-end">
+            <img src={profile} alt="Profile Image" className="ml-48 w-10 h-8 rounded" />
+            <Link className="px-2 mx-2 hover:text-cyan-400" to="/">
+              John
+            </Link>
+            |
+            <Link className="px-2 hover:text-cyan-400" to="/">
+              Settings
+            </Link>
+            |
+            <Link className="px-2 hover:text-cyan-400" to="/">
+              Notifications
+            </Link>
+          </div>
+        </div>
+        <div className="bg-red-400 flex justify-center items-center h-full">
+            <div className="container mx-96 p-10 bg-slate-400">
                 <h1 className="mb-4 text-white text-center">Currency Converter</h1>
 
-                <div className="bg-white rounded-lg p-4">
+                <div className="bg-white rounded-lg p-10">
                     <div className="flex">
                         <div className="mr-2">
                             <label htmlFor="currency1" className="mx-3">
@@ -36,7 +62,7 @@ function CurrencyConvertor() {
                             </label>
                             <select
                                 id="currency1"
-                                className="block w-full py-2 px-5 border border-gray-300 rounded-md shadow-sm"
+                                className="block w-full py-2 px-10 border border-gray-300 rounded-md shadow-sm"
                                 value={fromCurrency}
                                 onChange={(e) => setFromCurrency(e.target.value)}
                             >
@@ -50,7 +76,7 @@ function CurrencyConvertor() {
                             </label>
                             <select
                                 id="currency2"
-                                className="block w-full py-2 px-5 border border-gray-300 rounded-md shadow-sm"
+                                className="block w-full py-2 px-10 border border-gray-300 rounded-md shadow-sm"
                                 value={toCurrency}
                                 onChange={(e) => setToCurrency(e.target.value)}
                             >
@@ -86,7 +112,9 @@ function CurrencyConvertor() {
                 </div>
             </div>
         </div>
-    );
+
+        </div>
+            );
 }
 
 export default CurrencyConvertor;

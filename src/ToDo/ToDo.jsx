@@ -1,4 +1,8 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+
+import profile from '../assets/profile.jpg'
+
 
 function TodoList() {
   const [todoInput, setTodoInput] = useState("");
@@ -44,7 +48,19 @@ function TodoList() {
   };
 
   return (
-    <div className="bg-blue-900 bg-opacity-80 flex justify-center w-full h-auto">
+    <div className="w-3/4">
+                    <div className="grid grid-cols-2 gap-4 bg-gray-800 text-white">
+                    <div className="col-span-1 p-4">
+                        <p>Your Profile <span className='text-lg'>&gt;</span> <span className='text-red-400 font-semibold text-lg'>ToDo App</span></p>
+                    </div>
+                    <div className="col-span-1 p-4 flex justify-end">
+                        <img src={profile} alt="Profile Image" className="ml-48 w-10 h-8 rounded" />
+                        <Link className='px-2 mx-2 w-auto hover:text-cyan-400'to="/">John</Link>|
+                        <Link className='px-2 hover:text-cyan-400' to='/'>Settings</Link>|
+                        <Link className='px-2 hover:text-cyan-400' to='/'>Notifications</Link>
+                    </div>
+                </div>
+    <div className="bg-blue-900 bg-opacity-80 flex justify-center h-full">
       <div className="container mx-48 my-20 px-10 bg-orange-500 bg-opacity-60">
         <h1 className="text-2xl font-bold mb-4 text-white ml-48">Todo List</h1>
         <input
@@ -85,6 +101,7 @@ function TodoList() {
             </li>
           ))}
         </ol>
+      </div>
       </div>
     </div>
   );
