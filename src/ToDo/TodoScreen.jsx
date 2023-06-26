@@ -21,7 +21,7 @@ const ToDOScreen = () => {
 
   return (
     <div className="flex">
-      <nav className="bg-gray-800 w-1/4 h-auto">
+      <nav className="bg-gray-800 w-1/4 h-full">
         <div className="max-w-xs mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-center mt-4">
             <div>

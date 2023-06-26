@@ -102,31 +102,34 @@ export default class Dashboard extends Component {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-4 gap-8 mx-14">
-                    <div className="col-span-1 bg-gray-200 flex flex-col items-center">
-                        <img className="w-10 rounded-full px-3 py-2" src={girl} alt="girl" />
+                <div className="grid grid-cols-4 gap-8 mx-14 mb-4">
+                    <div className="col-span-1 bg-gray-200 flex flex-col items-center py-2 rounded-lg">
+                        <img className="w-20 h-20 rounded-full px-3 py-2" src={girl} alt="girl" />
                         <h1 className="text-center mt-2">Ana De Armas</h1>
                         <h1 className="text-center text-sm">Analyst</h1>
                         <div className="flex justify-center mt-4">
-                            <button className="hover:bg-red-700 text-white mx-1 text-xs px-2 py-1 rounded-lg">Button 1</button>
-                            <button className="hover:bg-red-700 text-white mx-1 text-xs px-2 py-1 rounded-lg">Button 2</button>
-                            <button className="bg-red-700 hover:bg-red-700 text-white mx-1 text-xs px-2 py-1 rounded-lg">Button 3</button>
+                            <button className="bg-red-700 hover:bg-blue-400 text-white mx-1 text-xs px-2 py-1 rounded-lg">Analyst</button>
+                            <button className="bg-red-700 hover:bg-blue-400 text-white mx-1 text-xs px-2 py-1 rounded-lg">Ops</button>
+                            <button className="bg-red-700 hover:bg-blue-400 text-white mx-1 text-xs px-2 py-1 rounded-lg">Expert</button>
                         </div>
-                        <button className="bg-red-500 hover:bg-red-700 text-white mt-5 py-2 px-4 rounded-lg">Profile</button>
+                        <button className="bg-blue-500 hover:bg-red-700 text-white mt-5 py-2 px-4 rounded-lg">Profile</button>
                     </div>
-                    <div className="col-span-1 bg-gray-200 flex flex-col items-center">
-                        <img className="w-10 rounded-full px-3 py-2" src={man} alt="man" />
+                    <div className="col-span-1 bg-gray-200 flex flex-col items-center py-2 rounded-lg">
+                        <img className="w-20 h-20 rounded-full px-3 py-2" src={man} alt="man" />
                         <h1 className="text-center mt-2">Ryan Reynolds</h1>
-                        <h1 className="text-center text-sm">Analyst</h1>
+                        <h1 className="text-center text-sm">Data Scientist</h1>
                         <div className="flex justify-center mt-4">
-                            <button className="hover:bg-red-700 text-white mx-1 text-xs px-2 py-1 rounded-lg">Button 1</button>
-                            <button className="hover:bg-red-700 text-white mx-1 text-xs px-2 py-1 rounded-lg">Button 2</button>
-                            <button className="bg-red-700 hover:bg-red-700 text-white mx-1 text-xs px-2 py-1 rounded-lg">Button 3</button>
+                            <button className="bg-red-700 hover:bg-blue-400 text-white mx-1 text-xs px-2 py-1 rounded-lg">AI/ML</button>
+                            <button className="bg-red-700 hover:bg-blue-400 text-white mx-1 text-xs px-2 py-1 rounded-lg">Statist</button>
+                            <button className="bg-red-700 hover:bg-blue-400 text-white mx-1 text-xs px-2 py-1 rounded-lg">Analyst</button>
+                            
                         </div>
-                        <button className="bg-red-500 hover:bg-red-700 text-white mt-5 py-2 px-4 rounded-lg">Profile</button>
+                        <button className="bg-blue-500 hover:bg-red-700 text-white mt-5 py-2 px-4 rounded-lg">Profile</button>
+             
+
                     </div>
                     <div className="col-span-2 bg-gray-200 flex flex-col items-center">
-                        <img className="w-10 rounded-full px-3 py-2" src={graph} alt="graph" />
+                        <img className="w-full h-54 px-3 py-2" src={graph} alt="graph" />
                         <h1 className="text-center mt-2">Graph</h1>
                     </div>
                 </div>
