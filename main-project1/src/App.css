@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.bg1{
+  background-image: url(./assets/login.jpg);
+  background-size: cover;
+}
+
+.nav-bg{
+  background-image: url(./assets/nav1.jpg);
+  background-size: cover;
+}
