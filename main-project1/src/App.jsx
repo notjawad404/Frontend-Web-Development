@@ -1,15 +1,15 @@
 import './App.css'
-import Dashboard from './components/Dashboard'
+// import Dashboard from './components/Dashboard'
 // import Login from './components/Login'
-// import Page from './components/Page'
+import Page from './components/Page'
 
 function App() {
   
   return (
     <>
     {/* <Login/> */}
-    {/* <Page/> */}
-    <Dashboard/>
+    <Page/>
+    {/* <Dashboard/> */}
     </>
   )
 }

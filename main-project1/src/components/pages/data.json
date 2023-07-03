@@ -1,0 +1,32 @@
+[
+    {
+      "supplier": "Supplier A",
+      "category": "Category A",
+      "date": "2022-01-01T00:00:00.000Z",
+      "files": []
+    },
+    {
+      "supplier": "Supplier B",
+      "category": "Category B",
+      "date": "2022-01-02T00:00:00.000Z",
+      "files": [
+        {
+          "name": "file1.jpg"
+        },
+        {
+          "name": "file2.jpg"
+        }
+      ]
+    },
+    {
+      "supplier": "Supplier C",
+      "category": "Category C",
+      "date": "2022-01-03T00:00:00.000Z",
+      "files": [
+        {
+          "name": "file3.jpg"
+        }
+      ]
+    }
+  ]
+  

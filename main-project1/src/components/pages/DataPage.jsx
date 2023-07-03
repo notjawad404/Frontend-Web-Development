@@ -1,72 +1,65 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types';
 
-const DataPage = ({ files }) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
-  const totalPages = Math.ceil(files.length / itemsPerPage);
+const FormFields = ({ handleFormSubmit }) => {
+  const [selectedSupplier, setSelectedSupplier] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [files, setFiles] = useState([]);
 
-  const handleClickPage = (pageNumber) => {
-    setCurrentPage(pageNumber);
+  const handleSupplierChange = (e) => {
+    setSelectedSupplier(e.target.value);
   };
 
-  const renderFiles = () => {
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    const currentFiles = files.slice(startIndex, endIndex);
-
-    return currentFiles.map((file, index) => (
-      <div key={index} className="border p-4">
-        <div>
-          <strong>File:</strong> {file.name}
-        </div>
-        <div>
-          <strong>Date:</strong> {file.date}
-        </div>
-        <div>
-          <strong>Status:</strong> {file.status}
-        </div>
-      </div>
-    ));
+  const handleCategoryChange = (e) => {
+    setSelectedCategory(e.target.value);
   };
 
-  const renderPagination = () => {
-    const pages = [];
+  const handleFileInputChange = (e) => {
+    const fileList = e.target.files;
+    const filesArray = Array.from(fileList);
+    setFiles(filesArray);
+  };
 
-    for (let i = 1; i <= totalPages; i++) {
-      pages.push(
-        <button
-          key={i}
-          onClick={() => handleClickPage(i)}
-          className={`mr-2 py-2 px-4 rounded ${
-            currentPage === i ? 'bg-blue-500 text-white' : 'bg-gray-300'
-          }`}
-        >
-          {i}
-        </button>
-      );
-    }
-
-    return pages;
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleFormSubmit(selectedSupplier, selectedCategory, files);
   };
 
   return (
-    <div>
-      <h2 className="font-bold text-xl mb-4">Data Page</h2>
-      <div className="space-y-4">{renderFiles()}</div>
-      <div className="mt-4">{renderPagination()}</div>
-    </div>
+    <form className="flex flex-col items-center" onSubmit={handleSubmit}>
+      {/* Input fields */}
+      <select
+        name="supplier"
+        value={selectedSupplier}
+        onChange={handleSupplierChange}
+        className="border border-gray-300 rounded px-4 py-2 mb-4"
+      >
+        <option value="">Select Supplier</option>
+        {/* Supplier options */}
+      </select>
+      <select
+        name="category"
+        value={selectedCategory}
+        onChange={handleCategoryChange}
+        className="border border-gray-300 rounded px-4 py-2 mb-4"
+      >
+        <option value="">Select Category</option>
+        {/* Category options */}
+      </select>
+      <input
+        type="file"
+        name="files"
+        onChange={handleFileInputChange}
+        className="border border-gray-300 rounded px-4 py-2 mb-4"
+        multiple
+      />
+      <button
+        type="submit"
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Submit
+      </button>
+    </form>
   );
 };
 
-DataPage.propTypes = {
-    files: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired,
-        status: PropTypes.string.isRequired,
-      })
-    ).isRequired,
-  };
-
-export default DataPage;
+export default FormFields;
