@@ -3,6 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import '../App.css';
 
+import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -14,6 +17,10 @@ class Login extends Component {
       showRememberPassword: false, // Initially hiding the "Remember your password" pop-up
     };
   }
+
+  static propTypes = {
+    history: PropTypes.object.isRequired
+  };
 
   handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -39,7 +46,7 @@ class Login extends Component {
 
     if (email === 'alpha@gmail.com' && password === 'password123') {
       if (password.length >= 8) {
-        prompt('Login successful');
+        this.props.history.push('/home');
       } else {
         this.setState({ error: 'Password should be at least 8 characters long' });
       }
@@ -127,4 +134,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);

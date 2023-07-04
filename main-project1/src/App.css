@@ -12,3 +12,8 @@
   background-image: url(./assets/nav1.jpg);
   background-size: cover;
 }
+
+.bg-form{
+  background-image: url(./assets/form-bg.jpg);
+  background-size: cover;
+}

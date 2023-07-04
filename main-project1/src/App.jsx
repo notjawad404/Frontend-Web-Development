@@ -1,15 +1,22 @@
 import './App.css'
-// import Dashboard from './components/Dashboard'
+import Home from './components/Home';
 // import Login from './components/Login'
-import Page from './components/Page'
+// import { Router, Route, Outlet } from "react-router-dom";
 
 function App() {
   
   return (
     <>
-    {/* <Login/> */}
-    <Page/>
-    {/* <Dashboard/> */}
+    {/* <Router>
+      <Route path='/'>
+        <Login/>
+        <Outlet/>
+      </Route>
+    </Router>
+    <Route path='/home'>
+      <Home/>
+    </Route> */}
+    <Home/>
     </>
   )
 }

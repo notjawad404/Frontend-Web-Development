@@ -1,6 +1,7 @@
 import { Component } from 'react'
 import logo from '../assets/logo.png'
 import '../App.css'
+import { Link } from 'react-router-dom'
 
 export default class Navbar extends Component {
     render() {
@@ -15,18 +16,18 @@ export default class Navbar extends Component {
                         />
                     </div>
                     <div className="flex flex-col flex-grow justify-center items-center">
-                        <a
+                        <Link
                             href="#"
                             className="py-2 px-4 font-bold text-2xl text-white hover:text-yellow-400"
                         >
                             Dashboard
-                        </a>
-                        <a
+                        </Link>
+                        <Link
                             href="#"
                             className="py-2 px-4 font-bold text-2xl text-white hover:text-yellow-400"
                         >
                             Manage Files
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

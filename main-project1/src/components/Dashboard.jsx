@@ -1,14 +1,10 @@
 import { Component } from 'react'
-import Navbar from './Navbar'
 
 export default class Dashboard extends Component {
   render() {
     return (
 <div className='flex'>
-<div className='w-1/4 h-full'>
-<Navbar/>
-</div>
-<div className='w-3/4 h-screen overflow-y-auto'>
+<div className=' h-screen overflow-y-auto'>
       <div className='flex w-full h-auto justify-center items-center mt-5 mb-40'>
         <p className='w-56 bg-sky-700 text-white px-14 text-2xl font-bold rounded-full'>Dashboard</p>
       </div>
