@@ -17,32 +17,28 @@ export default function Chat1() {
   const addMessage = () => {
     if (newMessage.trim() !== "") {
       const newMessageObj = {
-        id: uuidv4(), // Generate a unique ID
+        id: uuidv4(),
         title: newMessage
       };
 
-      // Set loading state to true
       setSendMessageLoading(true);
 
-      // Post the new message
       axios
         .post("https://jsonplaceholder.typicode.com/posts", newMessageObj)
         .then((response) => {
           if (response.status >= 200 && response.status < 300) {
-            // Add the new message to the state
             setMessages([...messages, response.data]);
             setError("");
           } else {
             setError("Error occurred while posting the message.");
           }
-          console.log("Status Code:", response.status); // Log the status code
+          console.log("Status Code:", response.status);
         })
         .catch((error) => {
           setError("Error occurred while posting the message.");
           console.log(error);
         })
         .finally(() => {
-          // Reset loading state to false
           setSendMessageLoading(false);
         });
 
@@ -51,7 +47,6 @@ export default function Chat1() {
   };
 
   const clearMessages = () => {
-    // Set loading state to true
     setClearMessagesLoading(true);
 
     setMessages([]);
@@ -59,14 +54,12 @@ export default function Chat1() {
     setFilter("");
     setFilteredMessages([]);
 
-    // Reset loading state to false after a short delay (simulating an asynchronous operation)
     setTimeout(() => {
       setClearMessagesLoading(false);
     }, 500);
   };
 
   const filterMessages = () => {
-    // Set loading state to true
     setFilterMessagesLoading(true);
 
     const filtered = messages.filter((message) =>
@@ -74,20 +67,17 @@ export default function Chat1() {
     );
     setFilteredMessages(filtered);
 
-    // Reset loading state to false after a short delay (simulating an asynchronous operation)
     setTimeout(() => {
       setFilterMessagesLoading(false);
     }, 500);
   };
 
   const clearFilter = () => {
-    // Set loading state to true
     setClearFilterLoading(true);
 
     setFilter("");
     setFilteredMessages([]);
 
-    // Reset loading state to false after a short delay (simulating an asynchronous operation)
     setTimeout(() => {
       setClearFilterLoading(false);
     }, 500);
