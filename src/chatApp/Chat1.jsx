@@ -117,7 +117,7 @@ export default function Chat1() {
           value={newMessage}
           onChange={(e) => setNewMessage(e.target.value)}
           placeholder="Enter a message"
-          className="border border-gray-300 px-4 py-2 rounded-md w-full"
+          className="border border-gray-300 px-4 py-2 rounded-md w-56"
         />
         <button
           onClick={addMessage}
@@ -144,7 +144,7 @@ export default function Chat1() {
           value={filter}
           onChange={(e) => setFilter(e.target.value)}
           placeholder="Filter messages"
-          className="border border-gray-300 px-4 py-2 rounded-md w-full"
+          className="border border-gray-300 px-4 py-2 rounded-md w-56"
         />
         <button
           onClick={filterMessages}
