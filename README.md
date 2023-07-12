@@ -3,7 +3,7 @@
 1. Added currency-Convertor branch for Currency Convertor app using Tailwind CSS and Reactjs <br><br>
 2. Added todo-app branch for the Todo app using Tailwind CSS and Reactjs <br><br>
 3. Added dashboard branch for Dashboard app using Tailwind CSS and Reactjs <br><br>
-4. Added mini-project branch for and updated and combined web app of currency-convertor, todo, and dashboard using Tailwind CSS and Reactjs <br>
+4. Added mini-project branch for and updated and combined web app using Tailwind CSS and Reactjs of: <br>
       1) Currency Convertor<br>
       2) ToDo App<br>
       3) Dashboard<br>
