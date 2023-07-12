@@ -9,7 +9,7 @@ import girl from '../assets/girl.jpg';
 export default class Dashboard extends Component {
     render() {
         return (
-            <div className="w-3/4">
+            <div className="w-3/4 h-screen overflow-y-auto">
                 <div className="grid grid-cols-2 gap-4 bg-gray-800 text-white">
                     <div className="col-span-1 p-4">
                         <p>

@@ -2,9 +2,9 @@ import "../App.css";
 import logo from '../assets/logo.png';
 
 import { Link  } from 'react-router-dom';
-import CurrencyConvertor from "./Currency";
+import Chat from "./Chat";
 
-const CurrencyScreen = () => {
+const ChatScreen = () => {
   const navLinks = [
     { text: "Dashboard", to: "/" },
     { text: "Currency Convertor", to: "/Currency-Convertor" },
@@ -36,9 +36,9 @@ const CurrencyScreen = () => {
           </div>
         </div>
       </nav>
-      <CurrencyConvertor/>
+      <Chat/>
     </div>
   );
 };
 
-export default CurrencyScreen;
+export default ChatScreen;

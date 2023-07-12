@@ -7,22 +7,15 @@ import { Link  } from 'react-router-dom';
 
 const DashboardScreen = () => {
   const navLinks = [
-    { text: "Profile", to: "/" },
+    { text: "Dashboard", to: "/" },
     { text: "Currency Convertor", to: "/Currency-Convertor" },
     { text: "ToDo App", to: "/ToDo" },
-    { text: "Dashboard", to: "/" },
-    { text: "Admin", to: "/" },
-    { text: "Records", to: "/" },
-    { text: "CRM Data", to: "/" },
-    { text: "Help", to: "/" },
-    { text: "Contact", to: "/" },
-    { text: "About", to: "/" },
-    { text: "Report", to: "/" }
+    { text: "Chat App", to: "/Chat" },
   ];
 
   return (
     <div className="flex">
-      <nav className="bg-gray-800 w-1/4 h-auto">
+      <nav className="bg-gray-800 w-1/4 h-screen overflow-y-auto">
         <div className="max-w-xs mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-center mt-8">
             <div>

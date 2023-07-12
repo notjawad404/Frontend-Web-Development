@@ -7,6 +7,7 @@ import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import ToDOScreen from './ToDo/TodoScreen';
 import CurrencyScreen from './Currency-Convertor/CurrencyScreen';
 import DashboardScreen from './Dashboard/DashboardScreen';
+import ChatScreen from './chatApp/chatScreen'
 
 export default class App extends Component {
   render() {
@@ -17,6 +18,7 @@ export default class App extends Component {
           <Route path='/Currency-Convertor' element={<CurrencyScreen/>}/>
           <Route path='/' element={<DashboardScreen/>}/>
           <Route path='/ToDo' element={<ToDOScreen/>} />
+          <Route path='/Chat' element={<ChatScreen/>} />
         </Routes>
       </Router>
       </>        
