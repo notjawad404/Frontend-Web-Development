@@ -1,0 +1,88 @@
+{
+    "tasks": {
+      "soap123": [
+        {
+          "id": 1,
+          "name": "Task A",
+          "description": "Complete basic training",
+          "status": "incomplete"
+        },
+        {
+          "id": 2,
+          "name": "Task B",
+          "description": "Report to the commander for briefing",
+          "status": "incomplete"
+        }
+      ],
+      "captainprice": [
+        {
+          "id": 1,
+          "name": "Task C",
+          "description": "Lead the team in a reconnaissance mission",
+          "status": "incomplete"
+        },
+        {
+          "id": 2,
+          "name": "Task D",
+          "description": "Intercept enemy communications",
+          "status": "completed"
+        }
+      ],
+      "roach_141": [
+        {
+          "id": 1,
+          "name": "Task E",
+          "description": "Train with the new equipment",
+          "status": "incomplete"
+        },
+        {
+          "id": 2,
+          "name": "Task F",
+          "description": "Secure the perimeter of the base",
+          "status": "incomplete"
+        }
+      ],
+      "ghost141": [],
+      "nikolai141": [
+        {
+          "id": 1,
+          "name": "Task G",
+          "description": "Provide air support during the operation",
+          "status": "completed"
+        }
+      ],
+      "jungle_griggs": [],
+      "gaz141": [],
+      "spectre_141": [
+        {
+          "id": 1,
+          "name": "Task H",
+          "description": "Infiltrate the enemy's hideout",
+          "status": "incomplete"
+        }
+      ],
+      "gaz_sanderson": [
+        {
+          "id": 1,
+          "name": "Task I",
+          "description": "Collect intelligence from an informant",
+          "status": "completed"
+        }
+      ],
+      "rook141": [
+        {
+          "id": 1,
+          "name": "Task J",
+          "description": "Assist in the extraction of a VIP",
+          "status": "incomplete"
+        },
+        {
+          "id": 2,
+          "name": "Task K",
+          "description": "Defend the allied forces from incoming attack",
+          "status": "incomplete"
+        }
+      ]
+    }
+  }
+  

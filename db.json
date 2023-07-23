@@ -1,0 +1,213 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "John 'Soap' MacTavish",
+      "username": "soap123",
+      "email": "soap.mactavish@gmail.com",
+      "password": "Soap141!",
+      "access": "denied"
+    },
+    {
+      "id": 2,
+      "name": "John Price",
+      "username": "captainprice",
+      "email": "price141@gmail.com",
+      "password": "Price@141",
+      "access": "granted"
+    },
+    {
+      "id": 3,
+      "name": "Gary 'Roach' Sanderson",
+      "username": "roach_141",
+      "email": "roach141@gmail.com",
+      "password": "Roach1234",
+      "access": "granted"
+    },
+    {
+      "id": 4,
+      "name": "Simon 'Ghost' Riley",
+      "username": "ghost141",
+      "email": "ghost.riley@gmail.com",
+      "password": "Ghost@141",
+      "access": "granted"
+    },
+    {
+      "id": 5,
+      "name": "Nikolai",
+      "username": "nikolai141",
+      "email": "nikolai141@gmail.com",
+      "password": "Niko_141!",
+      "access": "denied"
+    },
+    {
+      "id": 6,
+      "name": "John 'Jungle' Griggs",
+      "username": "jungle_griggs",
+      "email": "griggs.jungle@gmail.com",
+      "password": "Griggs141!",
+      "access": "granted"
+    },
+    {
+      "id": 7,
+      "name": "Gaz",
+      "username": "gaz141",
+      "email": "gaz141@gmail.com",
+      "password": "Gaz@141",
+      "access": "granted"
+    },
+    {
+      "id": 8,
+      "name": "Simon 'Spectre' Riley",
+      "username": "spectre_141",
+      "email": "spectre.riley@gmail.com",
+      "password": "Spectre141!",
+      "access": "granted"
+    },
+    {
+      "id": 9,
+      "name": "Gary 'Gaz' Sanderson",
+      "username": "gaz_sanderson",
+      "email": "gaz.sanderson@gmail.com",
+      "password": "GazS141!",
+      "access": "granted"
+    },
+    {
+      "id": 10,
+      "name": "Joseph 'Rook' Allen",
+      "username": "rook141",
+      "email": "rook.allen@gmail.com",
+      "password": "Rook141!",
+      "access": "granted"
+    },
+    {
+      "name": "Alpha",
+      "username": "Alpha123",
+      "email": "alpha123@gmail.com",
+      "password": "alpha123",
+      "access": "granted",
+      "id": 11
+    }
+  ],
+  "tasks": [
+    {
+      "user": "soap123",
+      "taskid": 1,
+      "taskName": "Task A",
+      "description": "Complete basic training",
+      "status": "incomplete"
+    },
+    {
+      "user": "soap123",
+      "taskid": 2,
+      "taskName": "Task B",
+      "description": "Report to the commander for briefing",
+      "status": "incomplete"
+    },
+    {
+      "user": "captainprice",
+      "taskid": 3,
+      "taskName": "Task J",
+      "description": "Assist in the extraction of a VIP",
+      "status": "incomplete"
+    },
+    {
+      "user": "captainprice",
+      "taskid": 4,
+      "taskName": "Task K",
+      "description": "Defend the allied forces from incoming attack",
+      "status": "incomplete"
+    },
+    {
+      "user": "roach_141",
+      "taskid": 5,
+      "taskName": "Task E",
+      "description": "Train with the new equipment",
+      "status": "incomplete"
+    },
+    {
+      "user": "roach_141",
+      "taskid": 6,
+      "taskName": "Task F",
+      "description": "Secure the perimeter of the base",
+      "status": "incomplete"
+    },
+    {
+      "user": "ghost141",
+      "taskid": 7,
+      "taskName": "Task G",
+      "description": "Provide air support during the operation",
+      "status": "completed"
+    },
+    {
+      "user": "nikolai141",
+      "taskid": 8,
+      "taskName": "Task H",
+      "description": "Infiltrate the enemy's hideout",
+      "status": "incomplete"
+    },
+    {
+      "user": "jungle_griggs",
+      "taskid": 9,
+      "taskName": "Task I",
+      "description": "Collect intelligence from an informant",
+      "status": "completed"
+    },
+    {
+      "user": "gaz141",
+      "taskid": 10,
+      "taskName": "Task J",
+      "description": "Assist in the extraction of a VIP",
+      "status": "incomplete"
+    },
+    {
+      "user": "gaz141",
+      "taskid": 11,
+      "taskName": "Task K",
+      "description": "Defend the allied forces from incoming attack",
+      "status": "incomplete"
+    },
+    {
+      "user": "spectre_141",
+      "taskid": 12,
+      "taskName": "Task J",
+      "description": "Assist in the extraction of a VIP",
+      "status": "incomplete"
+    },
+    {
+      "user": "spectre_141",
+      "taskid": 13,
+      "taskName": "Task K",
+      "description": "Defend the allied forces from incoming attack",
+      "status": "incomplete"
+    },
+    {
+      "user": "gaz_sanderson",
+      "taskid": 14,
+      "taskName": "Task J",
+      "description": "Assist in the extraction of a VIP",
+      "status": "incomplete"
+    },
+    {
+      "user": "gaz_sanderson",
+      "taskid": 15,
+      "taskName": "Task K",
+      "description": "Defend the allied forces from incoming attack",
+      "status": "incomplete"
+    },
+    {
+      "user": "rook141",
+      "taskid": 16,
+      "taskName": "Task J",
+      "description": "Assist in the extraction of a VIP",
+      "status": "incomplete"
+    },
+    {
+      "user": "rook141",
+      "taskid": 17,
+      "taskName": "Task K",
+      "description": "Defend the allied forces from incoming attack",
+      "status": "incomplete"
+    }
+  ]
+}
