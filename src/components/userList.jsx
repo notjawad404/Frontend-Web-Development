@@ -5,6 +5,7 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import ReactPaginate from 'react-paginate';
+import Navbar1 from './Nacbar1';
 
 const PAGE_SIZE = 10;
 
@@ -13,7 +14,7 @@ const UserListPage = () => {
   const [records, setRecords] = useState([]);
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({});
-  const [deleteUsername, setDeleteUsername] = useState('');
+  const [, setDeleteUsername] = useState('');
   const [existingUsernameError, setExistingUsernameError] = useState('');
   const [existingEmailError, setExistingEmailError] = useState('');
   const [searchUsername, setSearchUsername] = useState('');
@@ -44,11 +45,7 @@ const UserListPage = () => {
     setExistingEmailError('');
   };
 
-  const handleDeleteClick = (username) => {
-    setShowForm(false);
-    setDeleteUsername(username);
-    setFormData({});
-  };
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -89,19 +86,17 @@ const UserListPage = () => {
         setRecords((prevRecords) => [...prevRecords, res.data]);
         setShowForm(false);
         setFormData({});
+        alert('Record updated successfully');
       });
     }
   };
 
-  const handleDeleteSubmit = (e) => {
-    e.preventDefault();
+  const handleDeleteSubmit = (id) => {
   
     axios
-      .delete(`http://localhost:3030/users/${deleteUsername}`)
+      .delete(`http://localhost:3030/users/`+ id)
       .then(() => {
-        setRecords((prevRecords) => prevRecords.filter((record) => record.username !== deleteUsername));
-        setDeleteUsername('');
-  
+        alert('User deleted successfully');
         fetchUsers();
       })
       .catch((error) => {
@@ -135,7 +130,9 @@ const UserListPage = () => {
   const currentData = records.slice(offset, offset + PAGE_SIZE);
 
   return (
-    <div className="h-screen overflow-y-auto">
+    <div className='h-screen overflow-y-auto'>
+    <Navbar1/>
+    <div className="mx-20 md:mx-20">
       <div className="container mt-5">
         <div className="mb-3 flex gap-2">
           <button onClick={handleAddButtonClick} className="bg-red-400 px-4 py-2 rounded-md text-white">
@@ -150,7 +147,7 @@ const UserListPage = () => {
               onChange={(e) => setSearchUsername(e.target.value)}
             />
           </div>
-          <div>
+          <div className='mt-3'>
             <label className="mx-3">Filter access</label>
             <select name="filterAccess" value={filterAccess} onChange={(e) => setFilterAccess(e.target.value)}>
               <option value="all">All</option>
@@ -252,37 +249,18 @@ const UserListPage = () => {
               </form>
             </div>
           )}
-          {!showForm && deleteUsername && (
-            <div className="bg-blue-200 p-4 rounded-lg user-grid">
-              <h2>Delete User</h2>
-              <form onSubmit={handleDeleteSubmit}>
-                <div className="form-group">
-                  <label>Username:</label>
-                  <input
-                    type="text"
-                    name="username"
-                    value={deleteUsername}
-                    onChange={(e) => setDeleteUsername(e.target.value)}
-                    className="form-control"
-                  />
-                </div>
-                <button type="submit" className="btn btn-danger">
-                  Delete
-                </button>
-                <button type="button" onClick={handleCancelButtonClick} className="btn btn-secondary">
-                  Cancel
-                </button>
-              </form>
-            </div>
-          )}
-        <div className="container">
+          
+        <div className="container mt-4">
           <table className="table">
             <thead>
               <tr>
+                <th className=' uppercase border border-gray-800 py-2' colSpan={7}>Users List</th>
+              </tr>
+              <tr>
                 {users.map((user, index) => (
-                  <th key={index}>{user}</th>
+                  <th className='uppercase border border-gray-800' key={index}>{user}</th>
                 ))}
-                <th>Actions</th>
+                <th className='border border-gray-800'>ACTIONS</th>
               </tr>
             </thead>
             <tbody>
@@ -297,17 +275,17 @@ const UserListPage = () => {
                 })
                 .map((data, index) => (
                   <tr key={index}>
-                    <td className="px-4 text-center">{data.id}</td>
-                    <td className="px-4 text-center">{data.name}</td>
-                    <td className="px-4 text-center">{data.username}</td>
-                    <td className="px-4 text-center">{data.email}</td>
-                    <td className="px-4 text-center">{data.password}</td>
-                    <td className="px-4 text-center">{data.access}</td>
-                    <td>
+                    <td className="px-4 text-center border border-gray-800">{data.id}</td>
+                    <td className="px-4 text-center border border-gray-800">{data.name}</td>
+                    <td className="px-4 text-center border border-gray-800">{data.username}</td>
+                    <td className="px-4 text-center border border-gray-800">{data.email}</td>
+                    <td className="px-4 text-center border border-gray-800">{data.password}</td>
+                    <td className="px-4 text-center border border-gray-800">{data.access}</td>
+                    <td className='border border-gray-800'>
                       <button onClick={() => handleAddEditClick(data)} className="bg-blue-400 mx-2 w-20 rounded-lg">
                         Edit
                       </button>
-                      <button onClick={() => handleDeleteClick(data.username)} className="bg-red-400 w-20 mx-2 rounded-lg">
+                      <button onClick={() => handleDeleteSubmit(data.id)} className="bg-red-400 w-20 mx-2 rounded-lg ">
                         Delete
                       </button>
                     </td>
@@ -318,7 +296,7 @@ const UserListPage = () => {
         </div>
         {/* Pagination */}
         <div className="mt-4 space-x-4">
-  <ReactPaginate className='grid grid-flow-row grid-cols-10 gap-4 mx-40'
+  <ReactPaginate className='grid grid-flow-row lg:grid-cols-10 md:grid-cols-4 md:mx-20 gap-4 mx-40'
     previousLabel={'Previous'}
     nextLabel={'Next'}
     breakLabel={'...'}
@@ -332,6 +310,7 @@ const UserListPage = () => {
 </div>
 
       </div>
+    </div>
     </div>
   );
 };

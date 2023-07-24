@@ -82,11 +82,19 @@
     },
     {
       "name": "Alpha",
-      "username": "Alpha123",
+      "username": "alpha1234",
       "email": "alpha123@gmail.com",
-      "password": "alpha123",
+      "password": "password1",
       "access": "granted",
       "id": 11
+    },
+    {
+      "name": "Zulu",
+      "username": "zulu123",
+      "email": "zulu.212@gmail.com",
+      "password": "zulu123",
+      "access": "granted",
+      "id": 12
     }
   ],
   "tasks": [
@@ -208,6 +216,12 @@
       "taskName": "Task K",
       "description": "Defend the allied forces from incoming attack",
       "status": "incomplete"
+    }
+  ],
+  "Role": [
+    {
+      "user": "",
+      "role": ""
     }
   ]
 }

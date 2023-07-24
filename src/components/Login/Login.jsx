@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState} from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-// import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
@@ -11,23 +11,24 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
 
+  const navigate = useNavigate();
+
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
   const handleLogin = (e) => {
     e.preventDefault();
-    const adminUsername = 'admin'; // Admin's username
-    const adminPassword = 'admin123'; // Admin's password
+    const adminUsername = 'admin';
+    const adminPassword = 'admin123';
 
     if (username === adminUsername && password === adminPassword) {
-      // Admin login
+    
       setLoginError('');
       setIsAdmin(true);
-      // onLogin();
-      console.log('Admin is logged in.');
+      const role = 'admin'
+      navigate('/home', {state: {role: role}});
     } else {
-      // Regular user login check using axios
       axios
         .get('http://localhost:3030/users')
         .then((response) => {
@@ -37,16 +38,16 @@ const Login = () => {
           if (user) {
             if (user.access === 'granted') {
               setLoginError('');
-              setIsAdmin(false); // Set isAdmin to false for regular user login
-              // onLogin();
-              console.log('User is logged in.');
+              setIsAdmin(false);
+              const role = 'user'
+              navigate('/home', {state: {role: role, user: username}});
             } else {
               setLoginError('Access denied.');
-              setIsAdmin(false); // Set isAdmin to false for regular user login
+              setIsAdmin(false);
             }
           } else {
             setLoginError('Invalid username or password.');
-            setIsAdmin(false); // Set isAdmin to false for login failure
+            setIsAdmin(false);
           }
         })
         .catch((error) => {
@@ -58,7 +59,7 @@ const Login = () => {
 
   return (
     <div className="bg-red-400 h-screen">
-      <div className='flex justify-center items-center pt-48'>
+      <div className='flex justify-center items-center pt-36'>
         <form onSubmit={handleLogin} className='bg-lime-400 p-10 rounded-md'>
           <h1 className='text-center font-bold text-2xl'>Login</h1>
           <div className="form-group my-4">
@@ -81,15 +82,10 @@ const Login = () => {
           </button>
           {loginError && <div className="my-4">{loginError}</div>}
           {isAdmin && <div className="my-4">Admin is logged in.</div>}
-          {/* {!isAdmin && <div className="my-4">User is logged in.</div>} */}
         </form>
       </div>
     </div>
   );
 };
-
-// Login.propTypes = {
-//   onLogin: PropTypes.func.isRequired,
-// };
 
 export default Login;
