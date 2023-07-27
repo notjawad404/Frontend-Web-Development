@@ -8,6 +8,8 @@ import { useLocation } from 'react-router-dom';
 const PAGE_SIZE = 10;
 const API_ENDPOINT = 'http://localhost:3030/tasks';
 
+
+
 const Users = () => {
   const [, setUsers] = useState([]);
   const [records, setRecords] = useState([]);
@@ -56,7 +58,9 @@ const Users = () => {
     axios
       .post(API_ENDPOINT, taskData)
       .then((response) => {
-        setRecords((prevRecords) => [...prevRecords, response.data]);
+        alert('Task added successfully');
+        console.log("Response = ",response)
+        // setRecords((prevRecords) => [...prevRecords, response.data]);
         toggleAddForm();
       })
       .catch((error) => {
@@ -115,7 +119,7 @@ const Users = () => {
               <Link to='/user' className="hover:bg-red-500 py-1 px-1 rounded-lg">
                 Tasks
               </Link>
-              <Link to='/'>Logout</Link>
+              <Link to='/'  className="hover:bg-red-500 py-1 px-1 rounded-lg">Logout</Link>
       </div>
     </nav>
       <div className="container mt-5">
@@ -148,7 +152,7 @@ const Users = () => {
                 <input
                   type="text"
                   name="user"
-                  value={formData.user}
+                  // value={formData.user}
                   onChange={handleChange}
                   className='w-60 px-2 rounded-lg'
                 />
@@ -158,7 +162,7 @@ const Users = () => {
                 <input
                   type="text"
                   name="taskName"
-                  value={formData.taskName}
+                  // value={formData.taskName}
                   onChange={handleChange}
                   className='w-60 px-2 rounded-lg'
                 />
@@ -168,7 +172,7 @@ const Users = () => {
                 <input
                   type="text"
                   name="description"
-                  value={formData.description}
+                  // value={formData.description}
                   onChange={handleChange}
                   className='w-60 px-2 rounded-lg'
                 />
@@ -177,7 +181,7 @@ const Users = () => {
                 <label>Status</label><br></br>
                 <select
                   name="status"
-                  value={formData.status}
+                  // value={formData.status}
                   onChange={handleChange}
                   className='rounded-lg'
                 >

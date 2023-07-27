@@ -11,10 +11,10 @@ const Navbar1 = () => {
         <div className="text-white ml-2 font-bold text-3xl">Task Force 141</div>
       </div>
       <div className="flex space-x-4 text-white">
-        <h1 className="hover:bg-red-500 py-1 px-1 rounded-lg">Admin</h1>
+        <h1 className="py-1 px-1 rounded-lg">Admin</h1>
         <Link to='/users' className="hover:bg-red-500 py-1 px-1 rounded-lg">UserList</Link>
         <Link to='/tasks' className="hover:bg-red-500 py-1 px-1 rounded-lg">TaskList</Link>
-        <Link to='/'>Logout</Link>
+        <Link to='/' className="hover:bg-red-500 py-1 px-1 rounded-lg">Logout</Link>
       </div>
     </nav>
   );

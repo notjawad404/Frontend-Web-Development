@@ -216,6 +216,13 @@
       "taskName": "Task K",
       "description": "Defend the allied forces from incoming attack",
       "status": "incomplete"
+    },
+    {
+      "id": "12",
+      "user": "captainprice",
+      "taskName": "Alpha",
+      "description": "Eliminate all hostages",
+      "status": "completed"
     }
   ],
   "Role": [

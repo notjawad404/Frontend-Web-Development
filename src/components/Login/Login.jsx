@@ -27,6 +27,7 @@ const Login = () => {
       setLoginError('');
       setIsAdmin(true);
       const role = 'admin'
+      console.log(role,' logged in successfully')
       navigate('/home', {state: {role: role}});
     } else {
       axios
@@ -40,6 +41,7 @@ const Login = () => {
               setLoginError('');
               setIsAdmin(false);
               const role = 'user'
+                    console.log(role,' logged in successfully')
               navigate('/home', {state: {role: role, user: username}});
             } else {
               setLoginError('Access denied.');

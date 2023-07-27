@@ -8,9 +8,10 @@ const Home = () => {
   const role = location.state.role;
   const user = location.state.user;
   const navigate = useNavigate();
+  console.log('Role = ', role)
 
   function handleNavigate() {
-    navigate('/user', { state: { user: user } });
+    navigate('/task', { state: { user: user } });
   }
 
   useEffect(() => {
@@ -34,6 +35,7 @@ const Home = () => {
               <button onClick={handleNavigate} className="hover:bg-red-500 py-1 px-1 rounded-lg">
                 Tasks
               </button>
+              <Link to="/user" className="hover:bg-red-500 py-1 px-1 rounded-lg">User</Link>
             </>
           ) : (
             <>

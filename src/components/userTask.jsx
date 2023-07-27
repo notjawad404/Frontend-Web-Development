@@ -7,13 +7,14 @@ const PAGE_SIZE = 10;
 const API_ENDPOINT = 'http://localhost:3030/tasks';
 
 const UserTasks = () => {
-  const [, setUsers] = useState([]); // Renamed to 'users' to reflect data better
+  const [, setUsers] = useState([]);
   const [records, setRecords] = useState([]);
   const [searchTaskName, setSearchTaskName] = useState('');
   const [filterStatus, setFilterStatus] = useState('all');
   const [currentPage, setCurrentPage] = useState(0);
   const [showAddForm, setShowAddForm] = useState(false);
   const [formData, setFormData] = useState({
+    id: '',
     user: '',
     taskName: '',
     description: '',
@@ -41,6 +42,7 @@ const UserTasks = () => {
     setShowAddForm((prevShowAddForm) => !prevShowAddForm);
     setEditTask(null);
     setFormData({
+      id: '', 
       user: '',
       taskName: '',
       description: '',
@@ -80,14 +82,13 @@ const UserTasks = () => {
     setFormData(task);
   };
 
-  const handleEditSubmit = (e) => {
-    e.preventDefault();
+  const handleEditSubmit = () => {
     axios
-      .put(`${API_ENDPOINT}/${editTask.taskid}`, editTask)
+      .put(`${API_ENDPOINT}/${editTask.id}`, editTask)
       .then(() => {
         setRecords((prevRecords) =>
           prevRecords.map((record) => {
-            if (record.taskid === editTask.taskid) {
+            if (record.id === editTask.id) {
               return editTask;
             }
             return record;
@@ -102,16 +103,16 @@ const UserTasks = () => {
   };
 
   return (
-    <div className="h-screen overflow-y-auto">
+    <div className="h-screen overflow-y-auto bg-red-500">
       <Navbar1 />
       <div className="container mt-5">
         <div className="my-3 flex gap-4 mx-20">
           <div className="">
-            <button className="btn bg-red-400 py-3 px-3 rounded-lg" onClick={toggleAddForm}>
+            <button className="btn bg-blue-400 py-3 px-3 rounded-lg" onClick={toggleAddForm}>
               {showAddForm ? 'Cancel' : 'Add New Task'}
             </button>
           </div>
-          <div className="bg-red-200 p-3 rounded-lg">
+          <div className="bg-blue-200 p-3 rounded-lg">
             <input
               placeholder="Search Task Name"
               type="text"
@@ -121,7 +122,7 @@ const UserTasks = () => {
             />
           </div>
           <div className="py-3">
-            <label className="mx-3">Filter Status</label>
+            <label className="mx-3 text-white">Filter Status</label>
             <select
               name="filterStatus"
               value={filterStatus}
@@ -138,6 +139,16 @@ const UserTasks = () => {
           <div className="mx-20 bg-blue-400">
             {editTask ? <h2 className="text-center text-3xl">Edit Task</h2> : <h2 className="text-center text-3xl">Add New Task</h2>}
             <form onSubmit={editTask ? handleEditSubmit : handleFormSubmit} className="grid grid-cols-2 gap-4 bg-blue-200 p-5">
+              <div className="mb-3">
+                <label className="px-2">ID</label><br />
+                <input
+                  type="text"
+                  name="id"
+                  value={formData.id}
+                  onChange={handleChange}
+                  className="w-60 px-2 rounded-lg"
+                />
+              </div>
               <div className="mb-3">
                 <label className="px-2">User</label><br />
                 <input
@@ -185,7 +196,7 @@ const UserTasks = () => {
                 {editTask ? 'Save' : 'Submit'}
               </button>
               {editTask && (
-                <button type="button" onClick={() => { setEditTask(null); setFormData({ user: '', taskName: '', description: '', status: '' }); }}>
+                <button type="button" onClick={() => { setEditTask(null); setFormData({ id: '', user: '', taskName: '', description: '', status: '' }); }}>
                   Cancel
                 </button>
               )}
@@ -193,16 +204,16 @@ const UserTasks = () => {
           </div>
         )}
         <div className="container my-5">
-          <h1 className="text-center font-bold text">Tasks</h1>
-          <table className="table mx-20 border-collapse">
+          <h1 className="text-center mx-20 font-bold text-2xl text-white">Tasks</h1>
+          <table className="table mx-20 w-full border-collapse rounded-lg overflow-hidden bg-blue-100 ">
             <thead>
               <tr>
-                <th className="px-4 mx-5 text-center border border-gray-800">User</th>
-                <th className="px-4 mx-5 text-center border border-gray-800">ID</th>
-                <th className="px-4 mx-5 text-center border border-gray-800">Task Name</th>
-                <th className="px-4 mx-5 text-center border border-gray-800">Description</th>
-                <th className="px-4 mx-5 text-center border border-gray-800">Status</th>
-                <th className="px-4 mx-5 text-center border border-gray-800">Actions</th>
+                <th className="px-4 mx-5 text-center bg-gray-300">ID</th>
+                <th className="px-4 mx-5 text-center bg-gray-300">User</th>
+                <th className="px-4 mx-5 text-center bg-gray-300">Task Name</th>
+                <th className="px-4 mx-5 text-center bg-gray-300">Description</th>
+                <th className="px-4 mx-5 text-center bg-gray-300">Status</th>
+                <th className="px-4 mx-5 text-center bg-gray-300">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -217,12 +228,12 @@ const UserTasks = () => {
                 })
                 .map((data, index) => (
                   <tr key={index}>
-                    <td className="px-4 mx-5 text-center border border-gray-800">{data.user}</td>
-                    <td className="px-4 mx-5 text-center border border-gray-800">{data.taskid}</td>
-                    <td className="px-4 mx-5 text-center border border-gray-800">{data.taskName}</td>
-                    <td className="px-4 mx-5 text-center border border-gray-800">{data.description}</td>
-                    <td className="px-4 mx-5 text-center border border-gray-800">{data.status}</td>
-                    <td className="px-4 mx-5 text-center border border-gray-800">
+                    <td className="px-4 mx-5 text-center">{data.id}</td>
+                    <td className="px-4 mx-5 text-center">{data.user}</td>
+                    <td className="px-4 mx-5 text-center">{data.taskName}</td>
+                    <td className="px-4 mx-5 text-center">{data.description}</td>
+                    <td className="px-4 mx-5 text-center">{data.status}</td>
+                    <td className="px-4 mx-5 text-center">
                       <button
                         className="bg-blue-400 m-0 w-full rounded-lg"
                         onClick={() => handleEdit(data)}
@@ -237,7 +248,7 @@ const UserTasks = () => {
         </div>
         <div className="mt-4 space-x-4 mx-20">
           <ReactPaginate
-            className="grid grid-flow-row grid-cols-10 gap-4 sm:grid-cols-5"
+            className="grid grid-flow-row grid-cols-10 gap-4 sm:grid-cols-5 text-white"
             previousLabel={'Previous'}
             nextLabel={'Next'}
             breakLabel={'...'}

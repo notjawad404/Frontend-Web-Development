@@ -7,7 +7,7 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import ReactPaginate from 'react-paginate';
 import Navbar1 from './Nacbar1';
 
-const PAGE_SIZE = 10;
+const PAGE_SIZE = 5;
 
 const UserListPage = () => {
   const [users, setUsers] = useState([]);
@@ -92,9 +92,9 @@ const UserListPage = () => {
   };
 
   const handleDeleteSubmit = (id) => {
-  
+
     axios
-      .delete(`http://localhost:3030/users/`+ id)
+      .delete(`http://localhost:3030/users/` + id)
       .then(() => {
         alert('User deleted successfully');
         fetchUsers();
@@ -103,7 +103,7 @@ const UserListPage = () => {
         console.error('Error deleting user:', error);
       });
   };
-  
+
 
   const handleAddButtonClick = () => {
     setShowForm(true);
@@ -130,33 +130,33 @@ const UserListPage = () => {
   const currentData = records.slice(offset, offset + PAGE_SIZE);
 
   return (
-    <div className='h-screen overflow-y-auto'>
-    <Navbar1/>
-    <div className="mx-20 md:mx-20">
-      <div className="container mt-5">
-        <div className="mb-3 flex gap-2">
-          <button onClick={handleAddButtonClick} className="bg-red-400 px-4 py-2 rounded-md text-white">
-            Add User
-          </button>
-          <div className="bg-red-200 p-3 rounded-lg">
-            <label className="mx-3">Search Name</label>
-            <input
-              type="text"
-              name="searchUsername"
-              value={searchUsername}
-              onChange={(e) => setSearchUsername(e.target.value)}
-            />
+    <div className='h-screen overflow-y-auto bg-red-500'>
+      <Navbar1 />
+      <div className="mx-20 md:mx-20">
+        <div className="container mt-5">
+          <div className="mb-3 flex gap-2">
+            <button onClick={handleAddButtonClick} className="bg-red-400 px-4 py-2 rounded-md text-white">
+              Add User
+            </button>
+            <div className="bg-red-200 p-3 rounded-lg">
+              <label className="mx-3">Search Name</label>
+              <input
+                type="text"
+                name="searchUsername"
+                value={searchUsername}
+                onChange={(e) => setSearchUsername(e.target.value)}
+              />
+            </div>
+            <div className='mt-3'>
+              <label className="mx-3">Filter access</label>
+              <select name="filterAccess" value={filterAccess} onChange={(e) => setFilterAccess(e.target.value)}>
+                <option value="all">All</option>
+                <option value="granted">Granted</option>
+                <option value="denied">Denied</option>
+              </select>
+            </div>
           </div>
-          <div className='mt-3'>
-            <label className="mx-3">Filter access</label>
-            <select name="filterAccess" value={filterAccess} onChange={(e) => setFilterAccess(e.target.value)}>
-              <option value="all">All</option>
-              <option value="granted">Granted</option>
-              <option value="denied">Denied</option>
-            </select>
-          </div>
-        </div>
-        {showForm && (
+          {showForm && (
             <div className="bg-blue-200 p-4 rounded-lg user-grid">
               <h2 className="text-center mb-4">{formData.id ? 'Edit User' : 'Add User'}</h2>
               <form className="grid grid-cols-2 gap-4" onSubmit={handleSubmit}>
@@ -249,68 +249,76 @@ const UserListPage = () => {
               </form>
             </div>
           )}
-          
-        <div className="container mt-4">
-          <table className="table">
-            <thead>
-              <tr>
-                <th className=' uppercase border border-gray-800 py-2' colSpan={7}>Users List</th>
-              </tr>
-              <tr>
-                {users.map((user, index) => (
-                  <th className='uppercase border border-gray-800' key={index}>{user}</th>
-                ))}
-                <th className='border border-gray-800'>ACTIONS</th>
-              </tr>
-            </thead>
-            <tbody>
-              {currentData
-                .filter((data) => {
-                  if (filterAccess === 'all') return true;
-                  return data.access === filterAccess;
-                })
-                .filter((data) => {
-                  if (searchUsername === '') return true;
-                  return data.username.toLowerCase().includes(searchUsername.toLowerCase());
-                })
-                .map((data, index) => (
-                  <tr key={index}>
-                    <td className="px-4 text-center border border-gray-800">{data.id}</td>
-                    <td className="px-4 text-center border border-gray-800">{data.name}</td>
-                    <td className="px-4 text-center border border-gray-800">{data.username}</td>
-                    <td className="px-4 text-center border border-gray-800">{data.email}</td>
-                    <td className="px-4 text-center border border-gray-800">{data.password}</td>
-                    <td className="px-4 text-center border border-gray-800">{data.access}</td>
-                    <td className='border border-gray-800'>
-                      <button onClick={() => handleAddEditClick(data)} className="bg-blue-400 mx-2 w-20 rounded-lg">
-                        Edit
-                      </button>
-                      <button onClick={() => handleDeleteSubmit(data.id)} className="bg-red-400 w-20 mx-2 rounded-lg ">
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-            </tbody>
-          </table>
-        </div>
-        {/* Pagination */}
-        <div className="mt-4 space-x-4">
-  <ReactPaginate className='grid grid-flow-row lg:grid-cols-10 md:grid-cols-4 md:mx-20 gap-4 mx-40'
-    previousLabel={'Previous'}
-    nextLabel={'Next'}
-    breakLabel={'...'}
-    pageCount={pageCount}
-    marginPagesDisplayed={2}
-    pageRangeDisplayed={5}
-    onPageChange={handlePageChange}
-    containerClassName={'pagination'}
-    activeClassName={'active'}
-  />
-</div>
 
+          <div className="container mt-4">
+            <table className="table w-full border-collapse rounded-lg overflow-hidden bg-blue-100 ">
+              <thead>
+                <tr>
+                  {/* <th className="uppercase bg-gray-200 py-2 px-4">Users List</th> */}
+                  {users.map((user, index) => (
+                    <th className="uppercase bg-gray-200" key={index}>
+                      {user}
+                    </th>
+                  ))}
+                  <th className="uppercase bg-gray-200">ACTIONS</th>
+                </tr>
+              </thead>
+              <tbody className=''>
+                {currentData
+                  .filter((data) => {
+                    if (filterAccess === 'all') return true;
+                    return data.access === filterAccess;
+                  })
+                  .filter((data) => {
+                    if (searchUsername === '') return true;
+                    return data.username.toLowerCase().includes(searchUsername.toLowerCase());
+                  })
+                  .map((data, index) => (
+                    <tr
+                      key={index}
+                      className={index % 2 === 0 ? 'even:bg-blue-300' : 'odd:bg-white'}
+                    >
+                      <td className="px-4 py-2">{data.id}</td>
+                      <td className="px-4 py-2">{data.name}</td>
+                      <td className="px-4 py-2">{data.username}</td>
+                      <td className="px-4 py-2">{data.email}</td>
+                      <td className="px-4 py-2">{data.password}</td>
+                      <td className="px-4 py-2">{data.access}</td>
+                      <td className="px-4 py-2">
+                        <button
+                          onClick={() => handleAddEditClick(data)}
+                          className="bg-blue-400 pr-2 mr-1 w-20 rounded-lg text-white"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          onClick={() => handleDeleteSubmit(data.id)}
+                          className="bg-red-400 w-20 pl-2 ml-1 rounded-lg text-white"
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          </div>
+          <div className="mt-4 space-x-4">
+            <ReactPaginate className='grid grid-flow-row lg:grid-cols-10 md:grid-cols-4 md:mx-20 gap-4 mx-40 text-white'
+              previousLabel={'Previous'}
+              nextLabel={'Next'}
+              breakLabel={'...'}
+              pageCount={pageCount}
+              marginPagesDisplayed={2}
+              pageRangeDisplayed={5}
+              onPageChange={handlePageChange}
+              containerClassName={'pagination'}
+              activeClassName={'active'}
+            />
+          </div>
+
+        </div>
       </div>
-    </div>
     </div>
   );
 };
