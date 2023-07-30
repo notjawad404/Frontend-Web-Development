@@ -82,7 +82,7 @@
     },
     {
       "name": "Alpha",
-      "username": "alpha1234",
+      "username": "alpha123",
       "email": "alpha123@gmail.com",
       "password": "password1",
       "access": "granted",
@@ -92,7 +92,7 @@
       "name": "Zulu",
       "username": "zulu123",
       "email": "zulu.212@gmail.com",
-      "password": "zulu123",
+      "password": "Zulu@141",
       "access": "granted",
       "id": 12
     }
@@ -223,6 +223,41 @@
       "taskName": "Alpha",
       "description": "Eliminate all hostages",
       "status": "completed"
+    },
+    {
+      "user": "",
+      "id": "fdhWe_3",
+      "taskName": "",
+      "description": "",
+      "status": ""
+    },
+    {
+      "id": "23",
+      "user": "captainprice",
+      "taskName": "Task Jack",
+      "description": "Eliminate all hostages",
+      "status": "completed"
+    },
+    {
+      "user": "",
+      "id": "-zPjGxA",
+      "taskName": "",
+      "description": "",
+      "status": ""
+    },
+    {
+      "id": "1",
+      "user": "captainprice",
+      "taskName": "Task Zulu",
+      "description": "Assist in the extraction of a VIP",
+      "status": "completed"
+    },
+    {
+      "id": "2",
+      "user": "captainprice",
+      "taskName": "Task Jack",
+      "description": "Assist in the extraction of a VIP",
+      "status": "incomplete"
     }
   ],
   "Role": [

@@ -1,265 +1,201 @@
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import ReactPaginate from 'react-paginate';
-import { Link } from "react-router-dom";
-import logo from '../assets/logo.png'
-import { useLocation } from 'react-router-dom';
+// import axios from "axios";
+// import { useState, useEffect } from "react";
+// import { useLocation } from "react-router-dom";
 
-const PAGE_SIZE = 10;
-const API_ENDPOINT = 'http://localhost:3030/tasks';
+// import { Link } from "react-router-dom";
+// import logo from '../assets/logo.png';
 
+// const Task = () => {
+//   const location = useLocation();
+//   const user1 = location.state ? location.state.user : null;
+//   console.log(user1);
 
+//   const [tasks, setTasks] = useState([]);
+//   const [records, setRecords] = useState([]);
+//   const [inputData,] = useState({
+//     user: "",
+//     id: "",
+//     taskName: "",
+//     description: "",
+//     status: ""
+//   });
+  
+//   const [editingTaskId, setEditingTaskId] = useState(null);
+//   const [editingData, setEditingData] = useState({
+//     user: "",
+//     id: "",
+//     taskName: "",
+//     description: "",
+//     status: ""
+//   });
 
-const Users = () => {
-  const [, setUsers] = useState([]);
-  const [records, setRecords] = useState([]);
-  const [searchTaskName,] = useState('');
-  const [filterStatus, setFilterStatus] = useState('all');
-  const [currentPage, setCurrentPage] = useState(0);
-  const [showAddForm, setShowAddForm] = useState(false);
-  const [formData, setFormData] = useState({
-    user: '',
-    taskName: '',
-    description: '',
-    status: '',
-  });
-  const [editTask, setEditTask] = useState(null);
-  const [username,] = useState('');
+//   function handleaddSubmit(e) {
+//     e.preventDefault();
+//     if (editingTaskId) {
+//       // Update existing task
+//       axios.put(`http://localhost:3030/tasks/${editingTaskId}`, editingData)
+//         .then((res) => {
+//           console.log(res.data);
+//           alert("Task updated successfully");
+//           setEditingTaskId(null); // Clear editing mode
+//           setEditingData({
+//             user: "",
+//             id: "",
+//             taskName: "",
+//             description: "",
+//             status: ""
+//           });
+//         });
+//     } else {
+//       // Add new task
+//       axios.post('http://localhost:3030/tasks', inputData)
+//         .then((res) => {
+//           console.log(res.data);
+//           alert("Task added successfully");
+//         });
+//     }
+//   }
 
-  const location = useLocation();
-  const user = location.state.user
+//   function handleEditClick(taskId) {
+//     const taskToEdit = records.find((record) => record.taskid === taskId);
+//     if (taskToEdit) {
+//       setEditingTaskId(taskId);
+//       setEditingData({
+//         user: taskToEdit.user,
+//         id: taskToEdit.taskid,
+//         taskName: taskToEdit.taskName,
+//         description: taskToEdit.description,
+//         status: taskToEdit.status
+//       });
+//     }
+//   }
 
-  useEffect(() => {
-    fetchTasks();
-  }, [user]);
+//   useEffect(() => {
+//     axios.get(`http://localhost:3030/tasks?user=${user1}`)
+//       .then((res) => {
+//         console.log(res.data);
+//         setTasks(Object.keys(res.data[0]));
+//         setRecords(res.data);
+//       });
+//   }, [user1]);
 
-  const fetchTasks = () => {
-    const url = `${API_ENDPOINT}?user=${user}`;
-    axios.get(url).then((res) => {
-      setUsers(Object.keys(res.data[0]));
-      setRecords(res.data);
-    });
-  };
+//   return (
+//     <div className="h-screen overflow-y-auto bg-green-400">
+      // <nav className="flex justify-between items-center p-4 bg-blue-500">
+      //   <div className="flex items-center">
+      //     <div className="text-white font-bold text-lg">
+      //       <img className="w-10" src={logo} alt="logo" />
+      //     </div>
+      //     <div className="text-white ml-2 font-bold text-3xl">Task Force 141</div>
+      //   </div>
+      //   <div className="flex space-x-4 text-white">
+      //     <h1 className="hover:bg-red-500 py-1 px-1 rounded-lg">
+      //       Username: {user1}
+      //     </h1>
+      //     <Link to='/user' className="hover:bg-red-500 py-1 px-1 rounded-lg">
+      //       Tasks
+      //     </Link>
+      //     <Link to='/' className="hover:bg-red-500 py-1 px-1 rounded-lg">Logout</Link>
+      //   </div>
+      // </nav>
+//       <div className="mx-20 mt-10">
+//         <button className="btn btn-primary bg-red-600 py-2 px-2 text-white">Add Task</button>
+//       </div>
+//       <div className="bg-blue-200 p-5 mx-20">
+//         <form className="grid grid-cols-2 gap-4" onSubmit={handleaddSubmit}>
+//           <div className="mb-3">
+//             <label className='px-2'>User</label><br />
+//             <input
+//               type="text"
+//               name="user"
+//               className="w-60 px-2 rounded-lg"
+//               value={editingData.user}
+//               onChange={(e) => setEditingData({ ...editingData, user: e.target.value })}
+//             />
+//           </div>
+//           <div className="mb-3">
+//             <label className='px-2'>ID</label><br />
+//             <input
+//               type="number"
+//               name="id"
+//               className="w-60 px-2 rounded-lg"
+//               value={editingData.id}
+//               onChange={(e) => setEditingData({ ...editingData, id: e.target.value })}
+//             />
+//           </div>
+//           <div className="mb-3">
+//             <label className='px-2'>Task Name</label> <br />
+//             <input
+//               type="text"
+//               name="taskName"
+//               className='w-60 px-2 rounded-lg'
+//               value={editingData.taskName}
+//               onChange={(e) => setEditingData({ ...editingData, taskName: e.target.value })}
+//             />
+//           </div>
+//           <div className="mb-3">
+//             <label className='px-2'>Description</label><br />
+//             <input
+//               type="text"
+//               name="description"
+//               className='w-60 px-2 rounded-lg'
+//               value={editingData.description}
+//               onChange={(e) => setEditingData({ ...editingData, description: e.target.value })}
+//             />
+//           </div>
+//           <div className="mb-3">
+//             <label>Status</label><br />
+//             <select
+//               name="status"
+//               className='rounded-lg'
+//               value={editingData.status}
+//               onChange={(e) => setEditingData({ ...editingData, status: e.target.value })}
+//             >
+//               <option value="">Select Status</option>
+//               <option value="incomplete">Incomplete</option>
+//               <option value="completed">Completed</option>
+//             </select>
+//           </div>
+//           <button className='bg-red-400 w-20 rounded-lg text-white' type="submit">
+//             {editingTaskId ? "Update" : "Submit"}
+//           </button>
+//         </form>
+//       </div>
+//       <div className="mx-20 mt-10">
+//         <table className="w-full">
+//           <thead className="bg-gray-200">
+//             <tr>
+//               {tasks.map((task, index) => (
+//                 <th key={index} className="text-center px-4 capitalize">
+//                   {task}
+//                 </th>
+//               ))}
+//               <th>Actions</th>
+//             </tr>
+//           </thead>
+//           <tbody className="bg-blue-200">
+//             {records.map((record, index) => (
+//               <tr key={index} className="text-center">
+//                 <td className="text-center px-4">{record.user}</td>
+//                 <td className="text-center px-4">{record.taskid}</td>
+//                 <td className="text-center px-4">{record.taskName}</td>
+//                 <td className="text-center px-4">{record.description}</td>
+//                 <td className="text-center px-4">{record.status}</td>
+//                 <td className="text-center px-4">
+//                   <button
+//                     className="btn btn-primary"
+//                     onClick={() => handleEditClick(record.taskid)}
+//                   >
+//                     Edit
+//                   </button>
+//                 </td>
+//               </tr>
+//             ))}
+//           </tbody>
+//         </table>
+//       </div>
+//     </div>
+//   );
+// };
 
-  const toggleAddForm = () => {
-    setShowAddForm((prevShowAddForm) => !prevShowAddForm);
-    setEditTask(null);
-    setFormData({
-      user: '',
-      taskName: '',
-      description: '',
-      status: '',
-    });
-  };
-
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    const taskData = { ...formData, user: username };
-    axios
-      .post(API_ENDPOINT, taskData)
-      .then((response) => {
-        alert('Task added successfully');
-        console.log("Response = ",response)
-        // setRecords((prevRecords) => [...prevRecords, response.data]);
-        toggleAddForm();
-      })
-      .catch((error) => {
-        console.error('Error adding task:', error);
-      });
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
-  };
-
-  const handlePageChange = ({ selected }) => {
-    setCurrentPage(selected);
-  };
-
-  const pageCount = Math.ceil(records.length / PAGE_SIZE);
-  const offset = currentPage * PAGE_SIZE;
-  const currentData = records.slice(offset, offset + PAGE_SIZE);
-
-  const handleEdit = (task) => {
-    setEditTask(task);
-    setShowAddForm(true);
-    setFormData({ ...task, user: task.user });
-  };
-
-  const handleEditSubmit = (e) => {
-    e.preventDefault();
-    axios
-      .put(`${API_ENDPOINT}/${editTask.taskid}`, editTask)
-      .then(() => {
-        setRecords((prevRecords) =>
-          prevRecords.map((record) => (record.taskid === editTask.taskid ? editTask : record))
-        );
-        setEditTask(null);
-        toggleAddForm();
-      })
-      .catch((error) => {
-        console.error('Error updating task:', error);
-      });
-  };
-
-  return (
-    <div className="h-screen overflow-y-auto">
-      <nav className="flex justify-between items-center p-4 bg-blue-500">
-      <div className="flex items-center">
-        <div className="text-white font-bold text-lg">
-        <img className="w-10" src={logo} alt="logo"/>
-        </div>
-        <div className="text-white ml-2 font-bold text-3xl">Task Force 141</div>
-      </div>
-      <div className="flex space-x-4 text-white">
-      <h1 className="hover:bg-red-500 py-1 px-1 rounded-lg">
-                Username: {user}
-              </h1>
-              <Link to='/user' className="hover:bg-red-500 py-1 px-1 rounded-lg">
-                Tasks
-              </Link>
-              <Link to='/'  className="hover:bg-red-500 py-1 px-1 rounded-lg">Logout</Link>
-      </div>
-    </nav>
-      <div className="container mt-5">
-        <div className="my-3 flex gap-4 mx-20">
-          <div className="">
-            <button className="btn bg-red-400 py-3 px-3 rounded-lg" onClick={toggleAddForm}>
-              {showAddForm ? 'Cancel' : 'Add New Task'}
-            </button>
-          </div>
-          <div className="py-3">
-            <label className="mx-3">Filter Status</label>
-            <select
-              name="filterStatus"
-              value={filterStatus}
-              onChange={(e) => setFilterStatus(e.target.value)}
-            >
-              <option value="all">All</option>
-              <option value="incomplete">Incomplete</option>
-              <option value="completed">Completed</option>
-            </select>
-          </div>
-        </div>
-
-        {showAddForm && (
-          <div className='mx-20 bg-blue-400'>
-            {editTask ? <h2 className='text-center text-3xl'>Edit Task</h2> : <h2 className='text-center text-3xl'>Add New Task</h2>}
-            <form onSubmit={editTask ? handleEditSubmit : handleFormSubmit} className="grid grid-cols-2 gap-4 bg-blue-200 p-5">
-              <div className="mb-3">
-                <label className='px-2'>User</label><br></br>
-                <input
-                  type="text"
-                  name="user"
-                  // value={formData.user}
-                  onChange={handleChange}
-                  className='w-60 px-2 rounded-lg'
-                />
-              </div>
-              <div className="mb-3">
-                <label className='px-2'>Task Name</label> <br></br>
-                <input
-                  type="text"
-                  name="taskName"
-                  // value={formData.taskName}
-                  onChange={handleChange}
-                  className='w-60 px-2 rounded-lg'
-                />
-              </div>
-              <div className="mb-3">
-                <label className='px-2'>Description</label><br></br>
-                <input
-                  type="text"
-                  name="description"
-                  // value={formData.description}
-                  onChange={handleChange}
-                  className='w-60 px-2 rounded-lg'
-                />
-              </div>
-              <div className="mb-3">
-                <label>Status</label><br></br>
-                <select
-                  name="status"
-                  // value={formData.status}
-                  onChange={handleChange}
-                  className='rounded-lg'
-                >
-                  <option value="">Select Status</option>
-                  <option value="incomplete">Incomplete</option>
-                  <option value="completed">Completed</option>
-                </select>
-              </div>
-              <button className='bg-red-400 w-20 mx-20 rounded-lg py-1 text-white' type="submit">{editTask ? 'Save' : 'Submit'}</button>
-              {editTask && (
-                <button type="button" onClick={() => {setEditTask(null); setFormData({ user: '', taskName: '', description: '', status: '' });}}>
-                  Cancel
-                </button>
-              )}
-            </form>
-          </div>
-        )}
-
-        <div className="container my-5">
-          <h1 className="text-center font-bold text">Tasks</h1>
-          <table className="table mx-20 border-collapse">
-            <thead>
-              <tr>
-                <th className="px-4 mx-5 text-center border border-gray-800">User</th>
-                <th className="px-4 mx-5 text-center border border-gray-800">ID</th>
-                <th className="px-4 mx-5 text-center border border-gray-800">Task Name</th>
-                <th className="px-4 mx-5 text-center border border-gray-800">Description</th>
-                <th className="px-4 mx-5 text-center border border-gray-800">Status</th>
-                <th className="px-4 mx-5 text-center border border-gray-800">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {currentData
-                .filter((data) => {
-                  if (filterStatus === 'all') return true;
-                  return data.status === filterStatus;
-                })
-                .filter((data) => {
-                  if (searchTaskName === '') return true;
-                  return data.taskName.toLowerCase().includes(searchTaskName.toLowerCase());
-                })
-                .map((data, index) => (
-                  <tr key={index}>
-                    <td className="px-4 mx-5 text-center border border-gray-800">{data.user}</td>
-                    <td className="px-4 mx-5 text-center border border-gray-800">{data.taskid}</td>
-                    <td className="px-4 mx-5 text-center border border-gray-800">{data.taskName}</td>
-                    <td className="px-4 mx-5 text-center border border-gray-800">{data.description}</td>
-                    <td className="px-4 mx-5 text-center border border-gray-800">{data.status}</td>
-                    <td className="px-4 mx-5 text-center border border-gray-800">
-                      <button
-                        className="bg-blue-400 m-0 w-full rounded-lg"
-                        onClick={() => handleEdit(data)}
-                      >
-                        Edit
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-            </tbody>
-          </table>
-        </div>
-        <div className="mt-4 space-x-4 mx-20">
-          <ReactPaginate
-            className="grid grid-flow-row grid-cols-10 gap-4 sm:grid-cols-5"
-            previousLabel={'Previous'}
-            nextLabel={'Next'}
-            breakLabel={'...'}
-            pageCount={pageCount}
-            marginPagesDisplayed={2}
-            pageRangeDisplayed={5}
-            onPageChange={handlePageChange}
-            containerClassName={'pagination'}
-            activeClassName={'active'}
-          />
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default Users;
+// export default Task;

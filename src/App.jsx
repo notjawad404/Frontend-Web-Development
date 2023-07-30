@@ -3,7 +3,6 @@ import './App.css'
 import UserList from './components/userList.jsx'
 import Login from './components/Login/Login.jsx'
 import TaskList from './components/userTask'
-import User from './components/User.jsx'
 import Home from './components/Home.jsx'
 import Task from './components/Task'
 import AddTask from './components/AddTask'
@@ -31,11 +30,6 @@ const App = () => {
             //  </AdminRoute1>
           } />
 
-          <Route path='/user' element={
-            // <UserRoute1>
-              <User/>
-            //  </UserRoute1> 
-          } />
           <Route path='/task' element={<Task/>}/>
           <Route path='/addtask' element={<AddTask/>}/>
 

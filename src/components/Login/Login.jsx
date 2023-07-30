@@ -1,4 +1,4 @@
-import { useState} from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -23,12 +23,14 @@ const Login = () => {
     const adminPassword = 'admin123';
 
     if (username === adminUsername && password === adminPassword) {
-    
+      // Admin login
       setLoginError('');
       setIsAdmin(true);
-      const role = 'admin'
-      console.log(role,' logged in successfully')
-      navigate('/home', {state: {role: role}});
+      const role = 'admin';
+      console.log(role, 'logged in successfully');
+      // Update the role in the API
+      updateRole(username, role);
+      navigate('/home', { state: { role: role } });
     } else {
       axios
         .get('http://localhost:3030/users')
@@ -38,11 +40,14 @@ const Login = () => {
 
           if (user) {
             if (user.access === 'granted') {
+              // Regular user login
               setLoginError('');
               setIsAdmin(false);
-              const role = 'user'
-                    console.log(role,' logged in successfully')
-              navigate('/home', {state: {role: role, user: username}});
+              const role = 'user';
+              console.log(role, 'logged in successfully');
+              // Update the role in the API
+              updateRole(username, role);
+              navigate('/home', { state: { role: role, user: username } });
             } else {
               setLoginError('Access denied.');
               setIsAdmin(false);
@@ -59,19 +64,40 @@ const Login = () => {
     }
   };
 
+  const updateRole = (username, role) => {
+    // Assuming the API endpoint for updating user roles is http://localhost:3030/Role
+    const apiUrl = 'http://localhost:3030/Role';
+
+    // Create the data object with the updated role information
+    const updatedRoleData = {
+      username: username,
+      role: role,
+    };
+
+    // Make a PUT request to update the user's role
+    axios
+      .put(apiUrl, updatedRoleData)
+      .then((response) => {
+        console.log('User role updated successfully:', response.data);
+      })
+      .catch((error) => {
+        console.error('Failed to update user role:', error);
+      });
+  };
+
   return (
     <div className="bg-red-400 h-screen">
-      <div className='flex justify-center items-center pt-36'>
-        <form onSubmit={handleLogin} className='bg-lime-400 p-10 rounded-md'>
-          <h1 className='text-center font-bold text-2xl'>Login</h1>
+      <div className="flex justify-center items-center pt-36">
+        <form onSubmit={handleLogin} className="bg-lime-400 p-10 rounded-md">
+          <h1 className="text-center font-bold text-2xl">Login</h1>
           <div className="form-group my-4">
-            <label>Username:</label><br></br>
-            <input className='px-2 w-60 rounded-lg' type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+            <label>Username:</label><br />
+            <input className="px-2 w-60 rounded-lg" type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
           </div>
           <div className="form-group my-4">
             <label>Password:</label>
-            <div className='relative'>
-              <input className='pl-2 pr-7 w-60 rounded-lg' type={showPassword ? "text" : "password"} value={password} onChange={(e) => setPassword(e.target.value)} />
+            <div className="relative">
+              <input className="pl-2 pr-7 w-60 rounded-lg" type={showPassword ? "text" : "password"} value={password} onChange={(e) => setPassword(e.target.value)} />
               <FontAwesomeIcon
                 icon={showPassword ? faEyeSlash : faEye}
                 onClick={togglePasswordVisibility}
